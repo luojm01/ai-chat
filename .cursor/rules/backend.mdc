@@ -1,0 +1,51 @@
+---
+descption: NestJS 后端开发规范（Node.js 技术栈）
+globs: apps/backend/**, apps/server/**
+alwaysApply: false
+---
+
+适用范围：NestJS 后端项目（如 backend/、server/ 目录）
+
+## 技术选型
+
+- 使用 NestJS 框架构建后端服务，默认使用 TypeScript。
+- 所有依赖通过 NestJS 提供的依赖注入系统管理。
+- 模块划分按功能聚合组织（按 domain 拆分）。
+
+## 项目结构规范
+
+- 使用官方推荐结构：
+src/
+├── modules/ # 业务模块，每个模块一个子目录
+├── common/ # 公共组件、装饰器、过滤器等
+├── dto/ # 数据传输对象定义
+├── entities/ # TypeORM 或 Prisma 实体定义
+├── main.ts # 启动入口
+- 所有模块必须包含 `*.module.ts`，必要时可包含 controller、service、resolver、provider 等。
+
+## 代码风格
+
+- 所有逻辑必须使用 async/await 结构。
+- 控制器 Controller 只做参数处理与返回，不写业务逻辑。
+- 业务逻辑集中在 Service 层。
+- 使用 DTO + Pipe 完成请求数据校验。
+- 使用统一的异常处理（全局 `HttpExceptionFilter`）。
+
+## 路由与接口设计
+
+- 使用 RESTful 风格设计接口，路由通过 `@Controller()` 和 `@Get()` / `@Post()` 等注解声明。
+- 如果涉及 GraphQL，可使用 `@Resolver()`、`@Query()`、`@Mutation()` 等。
+- 每个接口必须说明用途与响应结构。
+
+## 错误与响应规范
+
+- 所有接口返回格式统一为：
+```ts
+{
+  success: boolean;
+  data?: any;
+  message?: string;
+  errorCode?: number;
+}
+```
+

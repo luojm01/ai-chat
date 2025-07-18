@@ -1,0 +1,22 @@
+{
+  "name": "ai-chat",
+  "packageManager": "pnpm@8.15.5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "turbo run dev",
+    "dev": "concurrently \"pnpm dev:server\" \"pnpm dev:client\"",
+    "dev:server": "cd apps/server && pnpm start:dev",
+    "dev:client": "cd apps/client && pnpm dev",
+    "build": "turbo run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "turbo": "^2.5.4"
+  }
+}

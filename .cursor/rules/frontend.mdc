@@ -1,0 +1,42 @@
+---
+description: 前端开发规范（React/Vue）
+globs: apps/frontend/**, apps/client/**, apps/web/**
+alwaysApply: false
+---
+
+适用范围：前端代码目录（如 frontend/、client/、web/ 等）
+
+## 技术选型
+
+- 使用 React（搭配 Hooks）或 Vue 3（Composition API）。
+- 使用 TypeScript，必要时可使用 JavaScript，但需配合 JSDoc。
+
+## 样式方案
+
+- 推荐使用 Sass 和 CSS。
+- 样式应模块化组织，不允许全局污染。
+
+## 组件与状态管理
+
+- 所有组件应放在 `src/components/` 文件夹中。
+- 状态管理工具：
+- React 项目推荐 Zustand 或 Redux Toolkit。
+- Vue 项目推荐使用 Pinia。
+
+## 请求封装
+
+- 所有网络请求使用 Axios 或 fetch。
+- 请求模块统一封装到 `utils/api.ts` 或 `api/index.ts`。
+- 错误统一处理，返回标准格式。
+
+## 工程实践
+
+- 使用 ESLint、Prettier 和 TypeScript 做代码检查。
+- 添加单元测试（Jest + React Testing Library / Vue Test Utils）。
+- 所有页面组件需说明其用途及依赖项。
+
+## 测试与部署
+
+- 若使用 CI/CD，请确保构建、测试任务集成于 `.github/workflows/` 或其他 CI 工具配置文件中。
+
+
